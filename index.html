@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Game Vault Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        p.bonus {
+            background-color: #e67e22;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="submit"], input[type="checkbox"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #e67e22;
+            color: #fff;
+            cursor: pointer;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="registrationContainer">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXH6laMbs-t57q8u8N6VBmfTLCCdKme8MZogaMcTEFl0mHJ3AfOne7dstvnOkDUHObKMEMhL28VlOi7t6T4QKUPXKOeY_epW4gycYbR5zLsuaf5KWLbm9xs0jNJD207ph9M5bBhG0xCxOzqk_8yRwo7a5zwRixCLM_G7uv0Q2oVrLM7pnbKnmRlVujbKw/s1933/Picsart_24-06-22_00-00-25-047.png" alt="Casino Logo" style="width: 100px;">
+        <h1>Ultimate Game Vault</h1>
+        <p class="bonus">Secure your $10 free play bonus now!</p>
+        <form id="registrationForm">
+            <input type="text" id="name" name="name" placeholder="Name" required><br>
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <label>
+                <input type="checkbox" id="usaResident" name="usaResident" required>
+                USA residents only.
+            </label>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    <div class="container hidden" id="congratulationsContainer">
+        <h1>Congratulations!</h1>
+        <p>Welcome to Ultimate Game Vault, <span id="userName"></span>!</p>
+        <img src="https://example.com/path/to/your/photo.jpg" alt="Platform Photo" style="width: 200px;">
+        <p>Discover non-stop gaming and casino excitement with top platforms like Juwa, Vegas Sweeps, Orion Stars, and more.</p>
+
+        <h2>Why Join Us?</h2>
+        <ul style="text-align: left;">
+            <li>24/7 Customer Service: Our support team is always available to assist you.</li>
+            <li>Trusted by Thousands: Secure and fair play, trusted by a large community.</li>
+            <li>Wide Game Selection: Slots, sweepstakes, card games – something for everyone.</li>
+            <li>Exciting Promotions: Regular bonuses and exclusive offers to boost your winnings.</li>
+            <li>User-Friendly Interface: Easy-to-use platform for a smooth gaming experience on any device.</li>
+        </ul>
+
+        <h2>Exclusive Features:</h2>
+        <ul style="text-align: left;">
+            <li>Daily Leaderboard: Top players get rewards. Even if you lose, earn bonuses based on your losses.</li>
+            <li>Congratulations Posts: Win big? Get featured on our page!</li>
+            <li>Share Your Wins: Send us your gameplay videos to receive bonuses.</li>
+            <li>Referral Bonuses: Get $10 when your referral deposits.</li>
+            <li>Generous Bonuses: 120% sign-up bonus and 30% regular bonus.</li>
+            <li>Instant Cash Withdrawals: Fast and secure withdrawals.</li>
+        </ul>
+
+        <p>Join Ultimate Game Vault today and start winning big!</p>
+        <p>Sign up now and enjoy the ultimate gaming experience!</p>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const usaResident = document.getElementById('usaResident').checked;
+
+            if (!usaResident) {
+                alert('Registration is only open to USA residents.');
+                return;
+            }
+
+            fetch('https://script.google.com/macros/s/AKfycbxTkNloCJI49bMIQR7LsCagiNIKC6YYe1fzgTieE-iMbRZkTBpLfNgvHvGzXkK2_FUCtw/exec', {
+                method: 'POST',
+                body: new URLSearchParams({
+                    'name': name,
+                    'email': email
+                })
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                console.log(responseText); // Debugging line
+                if (responseText.trim() === "Registration successful!") {
+                    document.getElementById('registrationContainer').classList.add('hidden');
+                    document.getElementById('congratulationsContainer').classList.remove('hidden');
+                    document.getElementById('userName').innerText = name;
+                } else {
+                    alert("Registration failed. Please try again.");
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Registration failed. Please try again.");
+            });
+        });
+    </script>
+</body>
+</html>
