@@ -103,13 +103,13 @@
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const usaResident = document.getElementById('usaResident').checked;
-
+            
             if (!usaResident) {
                 alert('Registration is only open to USA residents.');
                 return;
             }
 
-            fetch('https://script.google.com/macros/s/AKfycbxTkNloCJI49bMIQR7LsCagiNIKC6YYe1fzgTieE-iMbRZkTBpLfNgvHvGzXkK2_FUCtw/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbyJPxlT7dNOcneAxdKJKXJAcwoWfaGJpXQnvis9Aybqr7xXiMxEwCO00Trf7floGkbGdw/exec', {
                 method: 'POST',
                 body: new URLSearchParams({
                     'name': name,
@@ -118,13 +118,13 @@
             })
             .then(response => response.text())
             .then(responseText => {
-                console.log(responseText); // Debugging line
+                console.log('Response from server:', responseText); // Debugging line
                 if (responseText.trim() === "Registration successful!") {
                     document.getElementById('registrationContainer').classList.add('hidden');
                     document.getElementById('congratulationsContainer').classList.remove('hidden');
                     document.getElementById('userName').innerText = name;
                 } else {
-                    alert("Registration failed. Please try again.");
+                    alert("Registration failed: " + responseText);
                 }
             })
             .catch(error => {
