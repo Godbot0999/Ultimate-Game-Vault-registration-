@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Game Vault Registration</title>
+    <title>Ultimate Game Vault</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #1a1a1a;
             color: #fff;
             text-align: center;
-            padding: 50px;
+            padding: 20px;
         }
         .container {
-            max-width: 500px;
+            max-width: 800px;
             margin: 0 auto;
             background-color: #333;
             padding: 20px;
@@ -21,7 +21,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
         h1 {
-            margin-bottom: 20px;
+            color: #e67e22;
         }
         p.bonus {
             background-color: #e67e22;
@@ -30,6 +30,27 @@
             border-radius: 5px;
             font-size: 1.2em;
             font-weight: bold;
+        }
+        .features, .cta {
+            margin: 20px 0;
+        }
+        .feature {
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .cta {
+            background-color: #e67e22;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .cta:hover {
+            background-color: #d35400;
         }
         input[type="text"], input[type="email"], input[type="submit"], input[type="checkbox"] {
             width: calc(100% - 20px);
@@ -53,7 +74,25 @@
     </style>
 </head>
 <body>
-    <div class="container" id="registrationContainer">
+    <div class="container" id="advertisementContainer">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXH6laMbs-t57q8u8N6VBmfTLCCdKme8MZogaMcTEFl0mHJ3AfOne7dstvnOkDUHObKMEMhL28VlOi7t6T4QKUPXKOeY_epW4gycYbR5zLsuaf5KWLbm9xs0jNJD207ph9M5bBhG0xCxOzqk_8yRwo7a5zwRixCLM_G7uv0Q2oVrLM7pnbKnmRlVujbKw/s1933/Picsart_24-06-22_00-00-25-047.png" alt="Ultimate Game Vault Logo" style="width: 150px; margin-bottom: 20px;">
+        <p class="bonus">Secure your $10 Free Play Bonus now!</p>
+
+        <div class="features">
+            <h2>Why Choose Us?</h2>
+            <div class="feature">🕹️ Wide Game Selection: Juwa, Vegas Sweeps, Orion Stars, and more!</div>
+            <div class="feature">🎁 Exciting Promotions: 120% Sign-Up Bonus, Daily Leaderboard Rewards</div>
+            <div class="feature">👩‍💼 24/7 Customer Service: We're always here to help!</div>
+            <div class="feature">🔒 Trusted and Secure: Play with peace of mind</div>
+            <div class="feature">📱 User-Friendly Interface: Smooth gaming on any device</div>
+        </div>
+
+        <div class="cta" onclick="showRegistrationForm()">
+            Join Ultimate Game Vault Today!
+        </div>
+    </div>
+
+    <div class="container hidden" id="registrationContainer">
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXH6laMbs-t57q8u8N6VBmfTLCCdKme8MZogaMcTEFl0mHJ3AfOne7dstvnOkDUHObKMEMhL28VlOi7t6T4QKUPXKOeY_epW4gycYbR5zLsuaf5KWLbm9xs0jNJD207ph9M5bBhG0xCxOzqk_8yRwo7a5zwRixCLM_G7uv0Q2oVrLM7pnbKnmRlVujbKw/s1933/Picsart_24-06-22_00-00-25-047.png" alt="Casino Logo" style="width: 100px;">
         <p class="bonus">Secure your $10 free play bonus now!</p>
         <form id="registrationForm">
@@ -97,6 +136,11 @@
     </div>
 
     <script>
+        function showRegistrationForm() {
+            document.getElementById('advertisementContainer').classList.add('hidden');
+            document.getElementById('registrationContainer').classList.remove('hidden');
+        }
+
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
