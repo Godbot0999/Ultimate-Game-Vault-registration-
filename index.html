@@ -164,9 +164,10 @@
             fetch('https://ipinfo.io/json')
             .then(response => response.json())
             .then(data => {
-                const country = data.country;
-
-                fetch('https://script.google.com/macros/s/AKfycbz4x_50n1T3GL0Sj2uZgbyjnEAODif1I6K9JwhGmIiT8_z8gryv3Z4KhLPFEWEkmo6cLQ/exec', {
+                const country = data.country; // This line retrieves the country from IPInfo.io
+                
+                // Update the fetch URL for your Google Apps Script endpoint below
+                fetch('https://script.google.com/macros/s/AKfycbxjTEAivdRCz8eypYI3MY3klo2V-p1seYyQLqkOSltJSAyG9pBvMlr8NDJ26q0x1f9BIQ/exec', {
                     method: 'POST',
                     body: JSON.stringify({
                         'name': name,
