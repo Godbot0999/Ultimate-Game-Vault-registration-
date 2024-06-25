@@ -52,7 +52,7 @@
         .cta:hover {
             background-color: #d35400;
         }
-        input[type="text"], input[type="email"], input[type="submit"], input[type="checkbox"] {
+        input[type="text"], input[type="email"], input[type="submit"] {
             width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
@@ -63,6 +63,15 @@
             background-color: #e67e22;
             color: #fff;
             cursor: pointer;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            margin: 10px 0;
+        }
+        .checkbox-container input {
+            margin-right: 10px;
         }
         label {
             display: block;
@@ -98,10 +107,10 @@
         <form id="registrationForm">
             <input type="text" id="name" name="name" placeholder="Name" required><br>
             <input type="email" id="email" name="email" placeholder="Email" required><br>
-            <label>
+            <div class="checkbox-container">
                 <input type="checkbox" id="usaResident" name="usaResident" required>
-                USA residents only.
-            </label>
+                <label for="usaResident">USA residents only.</label>
+            </div>
             <input type="submit" value="Register">
         </form>
     </div>
@@ -109,7 +118,7 @@
     <div class="container hidden" id="congratulationsContainer">
         <h1>Congratulations!</h1>
         <p>Welcome to Ultimate Game Vault, <span id="userName"></span>!</p>
-        <img src="https://example.com/path/to/your/photo.jpg" alt="Platform Photo" style="width: 200px;">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKFwGec_ZjdSwgv8uq9rVf_SERhA4x8urUCkHQktWiimJ43jmTSuFMUFEANKUpeI6ty0lPH9u8DbSXGaA9mFHa_9yiKGfhH1Erxmin-Iu4FR9GJsGKqFsRMQibxthCPrQzGUZUX06Eq-dzGkCXIv_9Nw5QG1jkIiDoV1GQ_AQMR8UTEK25Mzuh1TLwMKE/s853/Picsart_24-06-21_02-13-36-351.jpg" alt="Platform Photo" style="width: 200px;">
         <p>Discover non-stop gaming and casino excitement with top platforms like Juwa, Vegas Sweeps, Orion Stars, and more.</p>
 
         <h2>Why Join Us?</h2>
