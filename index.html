@@ -52,7 +52,7 @@
         .cta:hover {
             background-color: #d35400;
         }
-        input[type="text"], input[type="email"], input[type="submit"] {
+        input[type="text"], input[type="email"], input[type="submit"], input[type="checkbox"] {
             width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
@@ -109,7 +109,11 @@
             <input type="email" id="email" name="email" placeholder="Email" required><br>
             <div class="checkbox-container">
                 <input type="checkbox" id="usaResident" name="usaResident" required>
-                <label for="usaResident">USA residents only.</label>
+                <label for="usaResident">I am a USA resident.</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="terms.html" target="_blank">terms and conditions</a>.</label>
             </div>
             <input type="submit" value="Register">
         </form>
@@ -155,9 +159,15 @@
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const usaResident = document.getElementById('usaResident').checked;
+            const termsAgreed = document.getElementById('terms').checked;
 
             if (!usaResident) {
                 alert('Registration is only open to USA residents.');
+                return;
+            }
+
+            if (!termsAgreed) {
+                alert('Please agree to the terms and conditions.');
                 return;
             }
 
