@@ -72,10 +72,10 @@
         }
         .checkbox-container input {
             margin-right: 10px;
+            width: auto;
         }
         label {
-            display: block;
-            margin: 10px 0;
+            margin: 0;
         }
         .hidden {
             display: none;
@@ -171,36 +171,27 @@
                 return;
             }
 
-            fetch('https://ipinfo.io/json')
-                .then(response => response.json())
-                .then(data => {
-                    const country = data.country;
-
-                    fetch('https://script.google.com/macros/s/AKfycbwPKvpPjAINmx1uIs6ZYDD1_E_ho3E1dNKup8lFraOUPJiuHayKIUfiim3uzssTyPCRgA/exec', {
-                        method: 'POST',
-                        mode: 'cors',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ name, email, country })
-                    })
-                    .then(response => response.text())
-                    .then(responseText => {
-                        if (responseText === 'Registration successful!') {
-                            document.getElementById('userName').innerText = name;
-                            document.getElementById('registrationContainer').classList.add('hidden');
-                            document.getElementById('congratulationsContainer').classList.remove('hidden');
-                        } else {
-                            alert('Registration failed: ' + responseText);
-                        }
-                    })
-                    .catch(error => {
-                        alert('Registration failed: ' + error.message);
-                    });
-                })
-                .catch(error => {
-                    alert('Failed to retrieve location information: ' + error.message);
-                });
+            fetch('https://script.google.com/macros/s/AKfycbwPKvpPjAINmx1uIs6ZYDD1_E_ho3E1dNKup8lFraOUPJiuHayKIUfiim3uzssTyPCRgA/exec', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email })
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                if (responseText === 'Registration successful!') {
+                    document.getElementById('userName').innerText = name;
+                    document.getElementById('registrationContainer').classList.add('hidden');
+                    document.getElementById('congratulationsContainer').classList.remove('hidden');
+                } else {
+                    alert('Registration failed: ' + responseText);
+                }
+            })
+            .catch(error => {
+                alert('Registration failed: ' + error.message);
+            });
         });
     </script>
 </body>
